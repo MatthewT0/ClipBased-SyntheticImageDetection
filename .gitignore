@@ -159,3 +159,9 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 .git-credentials
+
+# images
+/data/synthwildx/dalle3
+/data/synthwildx/midjourney_v5
+/data/synthwildx/real
+/data/synthbuster
