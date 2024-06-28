@@ -92,9 +92,14 @@ def runnig_tests(input_csv, weights_dir, models_list, device, batch_size = 1):
         last_index = table.index[-1]
         for index in tqdm.tqdm(table.index, total=len(table)):
             filename = os.path.join(rootdataset, table.loc[index, 'filename'])
-            for k in transform_dict:
-                batch_img[k].append(transform_dict[k](Image.open(filename).convert('RGB')))
-            batch_id.append(index)
+            try:
+                for k in transform_dict:
+                    batch_img[k].append(transform_dict[k](Image.open(filename).convert('RGB')))
+                batch_id.append(index)
+            except FileNotFoundError as err:
+                # exception handling for files not in the list
+                with open("logs.txt", "a") as f:
+                    f.write(f"{err} \n")
 
             if (len(batch_id) >= batch_size) or (index==last_index):
                 for k in do_transforms:

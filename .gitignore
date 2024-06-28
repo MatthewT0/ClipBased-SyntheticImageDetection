@@ -163,6 +163,7 @@ cython_debug/
 # images
 /data/synthwildx/dalle3
 /data/synthwildx/midjourney_v5
+/data/synthwildx/firefly
 /data/synthwildx/real
 /data/synthbuster
 
