@@ -165,3 +165,6 @@ cython_debug/
 /data/synthwildx/midjourney_v5
 /data/synthwildx/real
 /data/synthbuster
+
+# weights 
+weights
