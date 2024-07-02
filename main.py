@@ -24,6 +24,7 @@ import glob
 import sys
 import yaml
 from PIL import Image
+import psutil
 
 from torchvision.transforms  import CenterCrop, Resize, Compose, InterpolationMode
 from utils.processing import make_normalize
@@ -148,6 +149,10 @@ if __name__ == "__main__":
     else:
         args['models'] = args['models'].split(',')
     
+    # Set CPU affinity to threads 0-15
+    p = psutil.Process(os.getpid())
+    p.cpu_affinity(list(range(16)))
+
     table = runnig_tests(args['in_csv'], args['weights_dir'], args['models'], args['device'])
     if args['fusion'] is not None:
         table['fusion'] = apply_fusion(table[args['models']].values, args['fusion'], axis=-1)

@@ -169,3 +169,5 @@ cython_debug/
 
 # weights 
 weights
+logs.txt
+output
